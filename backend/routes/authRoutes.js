@@ -6,7 +6,6 @@ const router = express.Router();
 // GET /users
 router.post('/register',register);
 
-
 // GET /users/:id
 router.post('/login', login);
 
