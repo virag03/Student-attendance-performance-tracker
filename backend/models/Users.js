@@ -5,7 +5,11 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
-  role: { type: String, enum: ["admin", "teacher", "student"], default: "student" },
+  role: {
+    type: String,
+    enum: ["admin", "teacher", "Student"],
+    default: "student",
+  },
   classId: { type: mongoose.Schema.Types.ObjectId, ref: "Class" },
 });
 
@@ -17,7 +21,5 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-
-
 
 export default mongoose.model("User", userSchema);

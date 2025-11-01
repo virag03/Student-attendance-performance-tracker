@@ -3,6 +3,7 @@ import generateToken from "../utils/generateToken.js";
 
 export const register = async (req, res) => {
   const { name, email, password, role } = req.body;
+  console.log(req.body);
   const userExists = await User.findOne({ email });
   if (userExists) return res.status(400).json({ message: "User already exists" });
 
