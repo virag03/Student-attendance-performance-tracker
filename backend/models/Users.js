@@ -7,7 +7,15 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ["admin", "teacher", "student"], default: "student" },
   classId: { type: mongoose.Schema.Types.ObjectId, ref: "Class" },
-});
+  profile: {
+    phone: String,
+    address: String,
+    dateOfBirth: Date,
+    parentName: String,
+    parentPhone: String
+  },
+  isActive: { type: Boolean, default: true }
+}, { timestamps: true });
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -17,7 +25,5 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-
-
 
 export default mongoose.model("User", userSchema);
