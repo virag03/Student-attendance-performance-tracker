@@ -9,11 +9,13 @@ import {
   Alert,
 } from "react-bootstrap";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -25,7 +27,16 @@ function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       setMessage("Login successful!");
-      window.location.href = "/student"; // Redirect to homepage or dashboard
+      if(data.role === "Admin"){
+        navigate("/admin");
+        return;
+      } else if(data.role == "Teacher"){
+        navigate("/teacher");
+        return;
+      }else{
+        navigate("/student");
+      }
+      // window.location.href = "/student"; // Redirect to homepage or dashboard
     } catch (error) {
       setMessage(error.response?.data?.message || "Invalid credentials");
     }

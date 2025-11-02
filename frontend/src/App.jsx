@@ -18,17 +18,17 @@ function App() {
           <Route
             path="/admin"
             element={
-              <ProtectedRoute allowedRoles={["admin"]}>
+              // <ProtectedRoute allowedRoles={["admin"]}>
                 <AdminDashboard />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/teacher"
             element={
-              <ProtectedRoute allowedRoles={["teacher"]}>
+              // <ProtectedRoute allowedRoles={["teacher"]}>
                 <TeacherDashboard />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
