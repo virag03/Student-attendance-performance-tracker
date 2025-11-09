@@ -10,10 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
-=======
     "@tailwindcss/vite": "^4.1.17",
     "axios": "^1.13.2",
     "bootstrap": "^5.3.8",
@@ -29,7 +25,6 @@
     "recharts": "^3.3.0",
     "sweetalert2": "^11.26.3",
     "tailwindcss": "^4.1.17"
->>>>>>> master
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
